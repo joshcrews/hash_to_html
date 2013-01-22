@@ -1,6 +1,6 @@
 # HashToHtml
 
-TODO: Write a gem description
+Let's you call @my_hash.to_html in your views and prints out the contents to html with ul and li tags
 
 ## Installation
 
@@ -18,7 +18,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+In your Rails views
+
+<%= @my_hash.to_html %>
+
 
 ## Contributing
 
