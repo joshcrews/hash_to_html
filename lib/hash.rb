@@ -1,14 +1,5 @@
-unless defined?(Rails)
-  require 'active_support/concern'
-  require 'action_view/helpers/capture_helper'
-  require 'action_view/helpers/tag_helper'
-  require 'active_support/core_ext/string/inflections'
-end
-
 class Hash
 
-  include ActionView::Helpers::TagHelper
-  
   def to_html
     hash_to_list_items(self)
   end
@@ -19,12 +10,19 @@ class Hash
     html = hash.map do |key, value|
       if value.is_a?(Hash)
         inner_html = hash_to_list_items(value)
-        content_tag(:li, "#{key.to_s.humanize}: #{inner_html}".html_safe)
+        "<li>#{humanize(key.to_s)}: #{inner_html}</li>"
       else
-        content_tag(:li, "#{key.to_s.humanize}: #{value}".html_safe)
+        "<li>#{humanize(key.to_s)}: #{value}</li>"
       end
     end.join("\n")
-    content_tag(:ul, "\n#{html}\n".html_safe) + "\n"
+    "<ul>\n#{html}\n</ul>\n"
+  end
+
+  #
+  # mostly borrowed from Rails
+  #
+  def humanize(string)
+    string.gsub(/_/, ' ').gsub(/\b('?[a-z])/) { $1.capitalize }
   end
   
 end

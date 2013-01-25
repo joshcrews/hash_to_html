@@ -1,6 +1,6 @@
 # HashToHtml
 
-Let's you call @my_hash.to_html in your views and prints out the contents to html with ul and li tags
+Let's you call my_hash.to_html in your views and prints out the contents to html with ul and li tags
 
 ## Installation
 
@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-In your Rails views
+For example in an ERB template:
 
 <%= @my_hash.to_html %>
 
